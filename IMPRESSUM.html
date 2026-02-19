@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impressum | Schichtwaise – Rockband</title>
+    <meta
+      name="description"
+      content="Impressum und Kontaktdaten von Schichtwaise – Rockband aus Deutschland"
+    />
+    <style>
+      /* Reset & Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        
+        height: 100%;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+          sans-serif;
+        color: #f0f0f0;
+        background: #0a0a0a;
+        overflow-x: hidden;
+      }
+
+      /* Background Image Carousel */
+      .bg-container {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+      }
+      .bg-layer {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        filter: brightness(0.5) contrast(1.05);
+        opacity: 0;
+        transition: opacity 0.9s ease-in-out;
+      }
+      .bg-layer.active {
+        opacity: 1;
+      }
+
+      /* Header */
+      header {
+        padding: 2rem rem;
+        text-align: center;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.3)
+        );
+        backdrop-filter: blur(8px);
+        border-bottom: 2px solid #f6224c;
+        margin-bottom: 2rem;
+      }
+      header a {
+        display: inline-block;
+        text-decoration: none;
+      }
+      header img {
+        max-width: 500px;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 8px 16px rgba(255, 44, 85, 0.3));
+        transition: transform 0.3s ease;
+      }
+      header a:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Navigation */
+      nav {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 44, 85, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding: 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      nav a {
+        color: #fcfbfb;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      nav a:hover,
+      nav a:focus {
+        color: #fc345c;
+        background: rgba(1, 1, 1, 0.1);
+      }
+
+      /* Main Content */
+      main {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        background: rgba(15, 15, 20, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #ff2c55;
+        text-shadow: 0 4px 8px rgba(255, 44, 85, 0.3);
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        color: #ffd166;
+        border-left: 4px solid #ff2c55;
+        padding-left: 1rem;
+      }
+      p,
+      li {
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        color: #e0e0e0;
+        font-size: 1rem;
+      }
+      a {
+        color: #fa1b48;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      a:hover {
+        color: #ffd166;
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(8, 8, 8, 0.9);
+        border-top: 2px solid #d52649;
+        padding: 1.5rem;
+        text-align: center;
+        margin-top: auto;
+      }
+      footer ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      footer a {
+        color: #fefefe;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      footer a:hover {
+        color: #ff2c8f;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+        h2 {
+          font-size: 1.2rem;
+        }
+        main {
+          margin: 1rem;
+          padding: 1.5rem 1rem;
+        }
+        nav ul {
+          gap: 1rem;
+        }
+        header img {
+          max-width: 220px;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .bg-container,
+        nav {
+          display: none;
+        }
+        main {
+          background: white;
+          color: #000;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background image carousel -->
+    <div class="bg-container" id="bgContainer">
+      <div class="bg-layer" id="bg0"></div>
+      <div class="bg-layer" id="bg1"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <a href="index.html" title="Startseite | Schichtwaise">
+        <img
+          src="./images/Name Schichtwaise.jpg"
+          alt="Schichtwaise Logo"
+          loading="lazy"
+        />
+      </a>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="DATENSCHUTZ.html">Datenschutz</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <h1>Impressum</h1>
+      <p><strong>Stand:</strong> 16. Februar 2026</p>
+
+      <h2 id="verantwortlicher">Verantwortlicher</h2>
+      <p>
+        <strong>Heiko Köhler</strong><br />
+        Zum Rießenfelde 8<br />
+        30974 Wennigsen<br />
+        Deutschland
+      </p>
+
+      <h2 id="kontakt">Kontaktdaten</h2>
+      <p>
+        <strong>E-Mail:</strong><br />
+        <a href="mailto:schichtwaise@gmail.com">schichtwaise@gmail.com</a>
+      </p>
+
+      <h2 id="social">Social Media</h2>
+      <p>
+        <strong>Folge uns auf:</strong><br />
+        <a
+          href="https://www.youtube.com/@Schichtwaise"
+          rel="noopener noreferrer"
+          target="_blank"
+          >YouTube</a
+        ><br />
+        <a
+          href="https://www.instagram.com/reel/DSpR98LiB0I/"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Instagram</a
+        ><br />
+        <a
+          href="https://www.facebook.com/RockdieSpaetschicht/"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Facebook</a
+        ><br />
+        <a
+          href="https://www.tiktok.com/@schichtwaise"
+          rel="noopener noreferrer"
+          target="_blank"
+          >TikTok</a
+        >
+      </p>
+
+      <h2 id="haftung">Haftungshinweis</h2>
+      <p>
+        Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung
+        für die Inhalte externer Links. Für den Inhalt verlinkter Seiten sind
+        ausschließlich deren Betreiber verantwortlich.
+      </p>
+
+      <h2 id="urheberrecht">Urheberrecht</h2>
+      <p>
+        Die Inhalte und das Design dieser Website sind urheberrechtlich
+        geschützt. Eine unerlaubte Vervielfältigung oder Verwendung ist nicht
+        gestattet.
+      </p>
+
+      <h2 id="datenschutz">Datenschutz</h2>
+      <p>
+        Weitere Informationen zur Datenverarbeitung finden Sie in unserer
+        <a href="DATENSCHUTZ.html">Datenschutzerklärung</a>.
+      </p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <ul>
+        <li><a href="IMPRESSUM.html">Impressum</a></li>
+        <li><a href="DATENSCHUTZ.html">Datenschutz</a></li>
+        <li>&copy;  Schichtwaise 2026</li>
+      </ul>
+    </footer>
+
+    <script>
+      // Background image carousel (same logic as index.html)
+      const images = [
+        "images/1Hintergrund.jpg",
+        "images/2RockCity.jpg",
+        "images/3Bühne.jpg",
+        "images/4Studio.jpg",
+        "images/5ProbeStudioFace.jpg",
+        "/",
+      ];
+
+      const bg0 = document.getElementById("bg0");
+      const bg1 = document.getElementById("bg1");
+      let current = 0;
+      let activeLayer = 0;
+
+      function setBg(index) {
+        if (!images.length) return;
+        index = (index + images.length) % images.length;
+        const url = encodeURI(images[index]);
+        const target = activeLayer === 0 ? bg1 : bg0;
+        target.style.backgroundImage = `url("${url}")`;
+        target.classList.add("active");
+        (activeLayer === 0 ? bg0 : bg1).classList.remove("active");
+        activeLayer = 1 - activeLayer;
+        current = index;
+      }
+
+      // Preload images
+      images.forEach((img) => {
+        const i = new Image();
+        i.src = encodeURI(img);
+      });
+
+      // Set initial background
+      if (images.length) setBg(0);
+      // Change background every 8 seconds
+      if (images.length > 1) {
+        setInterval(() => setBg(current + 1), 8000);
+      }
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href !== "#") {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

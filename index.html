@@ -3,23 +3,40 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Schichtwaise – Rockband | Social & Musik</title>
+    <title>Schichtwaise – Rockband | Live-Musik & Events buchen</title>
     <meta
       name="description"
-      content="Schichtwaise – Rockband aus Deutschland. Folge uns auf YouTube, Instagram, Facebook, TikTok und höre unsere Musik direkt auf der Seite!"
+      content="Schichtwaise – Rockband aus Deutschland. Live-Musik für Events, Partys und Konzerte. Folge uns auf Social Media und buche uns jetzt!"
     />
     <meta
+      name="keywords"
+      content="Rockband, Live-Musik, Band buchen, Event-Musik, Deutschland, Schichtwaise"
+    />
+    <meta name="author" content="Schichtwaise" />
+    <meta
       property="og:title"
-      content="Schichtwaise – Rockband | Social & Musik"
+      content="Schichtwaise – Rockband | Live-Musik & Events buchen"
     />
     <meta
       property="og:description"
-      content="Folge Schichtwaise auf Social Media und höre unsere Songs direkt online!"
+      content="Buche Schichtwaise für dein Event! Rockband aus Deutschland mit Power und Leidenschaft."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="images/Schichtwaisebunt.jpg" />
+    <meta property="og:image:alt" content="Schichtwaise Bandfoto" />
     <meta property="og:locale" content="de_DE" />
-    <meta name="robots" content="index,follow" />
+    <meta property="og:url" content="https://schichtwaise.de" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#ff2c55" />
+    <link rel="canonical" href="https://schichtwaise.de" />
+    <link rel="icon" type="image/jpeg" href="images/Schichtwaisebunt.jpg" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+    />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -285,6 +302,27 @@
         }
       }
 
+      /* ── Skip Link (Accessibility) ── */
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent);
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        font-weight: 700;
+        z-index: 10000;
+        transition: top 0.3s ease;
+      }
+      .skip-link:focus {
+        top: 16px;
+        outline: 3px solid var(--accent2);
+        outline-offset: 2px;
+      }
+
       /* ── Footer Links ── */
       .footer-links {
         position: fixed;
@@ -492,7 +530,9 @@
         cursor: pointer;
         padding: 4px 8px;
         border-radius: 6px;
-        transition: color 0.2s, background 0.2s;
+        transition:
+          color 0.2s,
+          background 0.2s;
         line-height: 1;
       }
       .booking-modal .close-btn:hover {
@@ -605,6 +645,25 @@
         }
       }
 
+      /* ── Enhanced Focus Styles (Accessibility) ── */
+      :focus-visible {
+        outline: 3px solid var(--accent2);
+        outline-offset: 3px;
+      }
+
+      button:focus-visible,
+      .booking-btn:focus-visible,
+      .icon:focus-visible {
+        outline: 3px solid var(--accent2);
+        outline-offset: 3px;
+      }
+
+      /* Show focus indicator when using keyboard navigation */
+      body.show-focus :focus {
+        outline: 3px solid var(--accent2);
+        outline-offset: 3px;
+      }
+
       /* ── Responsive: Tablets ── */
       @media (max-width: 1024px) {
         .top-left {
@@ -705,7 +764,15 @@
     </style>
   </head>
   <body>
-    <div class="stage" aria-hidden="false">
+    <!-- Skip Link für Barrierefreiheit -->
+    <a
+      href="#main-content"
+      class="skip-link"
+      aria-label="Zum Hauptinhalt springen"
+      >Zum Hauptinhalt springen</a
+    >
+
+    <div class="stage" id="main-content" aria-hidden="false">
       <!-- Background image layers -->
       <div id="bg0" class="bg-layer"></div>
       <div id="bg1" class="bg-layer"></div>
@@ -793,12 +860,24 @@
       </a>
 
       <!-- Booking Button -->
-      <button class="booking-btn" id="bookingBtn" aria-label="Termin reservieren">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
+      <button
+        class="booking-btn"
+        id="bookingBtn"
+        aria-label="Termin reservieren"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
         </svg>
         Termin reservieren
       </button>
@@ -806,38 +885,92 @@
       <!-- Booking Modal -->
       <div class="booking-overlay" id="bookingOverlay">
         <div class="booking-modal" role="dialog" aria-labelledby="bookingTitle">
-          <button class="close-btn" id="bookingClose" aria-label="Schließen">&times;</button>
+          <button class="close-btn" id="bookingClose" aria-label="Schließen">
+            &times;
+          </button>
           <div id="bookingFormContainer">
             <h2 id="bookingTitle">🎸 Termin reservieren</h2>
-            <p class="subtitle">Wähle Datum & Uhrzeit – wir fügen es deinem Kalender hinzu.</p>
-            <form class="booking-form" id="bookingForm">
+            <p class="subtitle">
+              Wähle Datum & Uhrzeit – wir fügen es deinem Kalender hinzu.
+            </p>
+            <form
+              class="booking-form"
+              id="bookingForm"
+              action="https://formsubmit.co/schichtwaise@gmail.com"
+              method="POST"
+            >
+              <!-- FormSubmit Konfiguration -->
+              <input
+                type="hidden"
+                name="_subject"
+                value="🎸 Neue Buchung – Schichtwaise"
+              />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input
+                type="hidden"
+                name="_next"
+                value="https://schichtwaise.de"
+              />
+
+              <!-- Versteckte Felder für Kalenderdaten -->
+              <input type="hidden" id="icsStartDate" name="ics_start_date" />
+              <input type="hidden" id="icsEndDate" name="ics_end_date" />
+
               <label for="bookingName">Name</label>
-              <input type="text" id="bookingName" placeholder="Dein Name" required />
+              <input
+                type="text"
+                id="bookingName"
+                name="Name"
+                placeholder="Dein Name"
+                required
+              />
 
               <label for="bookingEmail">E-Mail</label>
-              <input type="email" id="bookingEmail" placeholder="deine@email.de" required />
+              <input
+                type="email"
+                id="bookingEmail"
+                name="E-Mail"
+                placeholder="deine@email.de"
+                required
+              />
 
               <div class="row">
                 <div>
                   <label for="bookingDate">Datum</label>
-                  <input type="date" id="bookingDate" required />
+                  <input type="date" id="bookingDate" name="Datum" required />
                 </div>
                 <div>
                   <label for="bookingTime">Uhrzeit</label>
-                  <input type="time" id="bookingTime" value="18:00" required />
+                  <input
+                    type="time"
+                    id="bookingTime"
+                    name="Uhrzeit"
+                    value="18:00"
+                    required
+                  />
                 </div>
               </div>
 
               <label for="bookingNote">Nachricht (optional)</label>
-              <textarea id="bookingNote" placeholder="z.B. Event-Details, Wünsche …"></textarea>
+              <textarea
+                id="bookingNote"
+                name="Nachricht"
+                placeholder="z.B. Event-Details, Wünsche …"
+              ></textarea>
 
-              <button type="submit" class="submit-btn">📅 Zum Kalender hinzufügen</button>
+              <button type="submit" class="submit-btn">
+                📅 Buchung absenden
+              </button>
             </form>
           </div>
           <div class="booking-success" id="bookingSuccess">
             <div class="checkmark">✅</div>
-            <h3>Termin erstellt!</h3>
-            <p>Die .ics Datei wurde heruntergeladen.<br/>Öffne sie, um den Termin in deinen Kalender einzutragen.</p>
+            <h3>Buchung gesendet!</h3>
+            <p>
+              Deine Anfrage wurde an Schichtwaise gesendet.<br />Du erhältst
+              eine Bestätigung per E-Mail.
+            </p>
           </div>
         </div>
       </div>
@@ -884,9 +1017,27 @@
       </div>
     </div>
 
-    <script>
+    <script defer>
       (function () {
         "use strict";
+
+        // ── Utility Functions ──
+        function $(selector) {
+          return document.getElementById(selector);
+        }
+
+        function safeGet(id) {
+          var el = $(id);
+          if (!el) {
+            console.warn("Element not found:", id);
+            return {
+              value: "",
+              style: {},
+              classList: { add: function () {}, remove: function () {} },
+            };
+          }
+          return el;
+        }
 
         // ── Background Image Carousel ──
         const images = [
@@ -960,22 +1111,33 @@
         }, 600);
 
         // ── Particle System ──
+        var prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
         var canvas = document.createElement("canvas");
         canvas.style.cssText =
           "position:fixed;inset:0;z-index:50;pointer-events:none";
         document.body.appendChild(canvas);
         var ctx = canvas.getContext("2d");
-        var W = (canvas.width = innerWidth);
-        var H = (canvas.height = innerHeight);
+
+        // Performance-Optimierung: Weniger Partikel auf mobilen Geräten
+        var isMobile =
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent,
+          );
+        var MAX_PARTICLES = isMobile || prefersReducedMotion ? 150 : 500;
+        var particlesEnabled = !prefersReducedMotion;
+
+        var W = (canvas.width = Math.min(innerWidth, 1920));
+        var H = (canvas.height = Math.min(innerHeight, 1080));
 
         window.addEventListener("resize", function () {
-          W = canvas.width = innerWidth;
-          H = canvas.height = innerHeight;
+          W = canvas.width = Math.min(innerWidth, 1920);
+          H = canvas.height = Math.min(innerHeight, 1080);
         });
 
         var COLORS = ["#ff2c55", "#69ffef", "#ffd166", "#ffffff", "#9b5de5"];
         var particles = [];
-        var MAX_PARTICLES = 500;
 
         function rand(a, b) {
           return a + Math.random() * (b - a);
@@ -983,7 +1145,16 @@
 
         function createParticle(x, y, dx, dy, c, size, life) {
           if (particles.length > MAX_PARTICLES) particles.shift();
-          particles.push({ x: x, y: y, dx: dx, dy: dy, c: c, size: size, life: life, age: 0 });
+          particles.push({
+            x: x,
+            y: y,
+            dx: dx,
+            dy: dy,
+            c: c,
+            size: size,
+            life: life,
+            age: 0,
+          });
         }
 
         function spawnTrail(x, y, vx, vy) {
@@ -995,23 +1166,24 @@
               (vy || rand(-1, 1)) * 0.3 + rand(-0.6, 0.6),
               COLORS[(Math.random() * COLORS.length) | 0],
               rand(2, 4),
-              rand(30, 70)
+              rand(30, 70),
             );
           }
         }
 
         function spawnBurst(x, y) {
-          var n = (rand(14, 28) | 0);
+          var n = rand(14, 28) | 0;
           for (var i = 0; i < n; i++) {
             var a = Math.random() * Math.PI * 2;
             var s = rand(2, 7);
             createParticle(
-              x, y,
+              x,
+              y,
               Math.cos(a) * s,
               Math.sin(a) * s,
               COLORS[(Math.random() * COLORS.length) | 0],
               rand(2, 6),
-              rand(50, 120)
+              rand(50, 120),
             );
           }
         }
@@ -1050,8 +1222,10 @@
         function animLoop(now) {
           var dt = (now - lastFrame) / 16.666;
           lastFrame = now;
-          updateParticles(dt);
-          drawParticles();
+          if (particlesEnabled) {
+            updateParticles(dt);
+            drawParticles();
+          }
           requestAnimationFrame(animLoop);
         }
         requestAnimationFrame(animLoop);
@@ -1091,11 +1265,20 @@
         });
 
         // ── Stage click to advance background ──
-        document.querySelector(".stage").addEventListener("click", function (e) {
-          if (e.target.closest(".icon") || e.target.closest(".music-player") || e.target.closest(".footer-links") || e.target.closest(".booking-btn") || e.target.closest(".booking-overlay")) return;
-          spawnBurst(e.clientX || W / 2, e.clientY || H / 2);
-          setBg(cur + 1);
-        });
+        document
+          .querySelector(".stage")
+          .addEventListener("click", function (e) {
+            if (
+              e.target.closest(".icon") ||
+              e.target.closest(".music-player") ||
+              e.target.closest(".footer-links") ||
+              e.target.closest(".booking-btn") ||
+              e.target.closest(".booking-overlay")
+            )
+              return;
+            spawnBurst(e.clientX || W / 2, e.clientY || H / 2);
+            setBg(cur + 1);
+          });
 
         // ── Ambient particle bursts ──
         setInterval(function () {
@@ -1116,13 +1299,31 @@
         var seekBar = document.getElementById("seekBar");
 
         var tracks = [
-          { src: "musik/Schichtwaise-Alles.mp3", title: "Schichtwaise – Alles" },
+          {
+            src: "musik/Schichtwaise-Alles.mp3",
+            title: "Schichtwaise – Alles",
+          },
           { src: "musik/Schichtwaise-Frei.mp3", title: "Schichtwaise – Frei" },
-          { src: "musik/Schichtwaise-Monster.mp3", title: "Schichtwaise – Monster" },
-          { src: "musik/Schichtwaise-Mosaik.mp3", title: "Schichtwaise – Mosaik" },
-          { src: "musik/Schichtwaise-Tag-mit-Dir.mp3", title: "Schichtwaise – Tag mit Dir" },
-          { src: "musik/Schichtwaise-Wenn-du-gehst.mp3", title: "Schichtwaise – Wenn du gehst" },
-          { src: "musik/Schichtwaise-Wird-alles-gut.mp3", title: "Schichtwaise – Wird alles gut" },
+          {
+            src: "musik/Schichtwaise-Monster.mp3",
+            title: "Schichtwaise – Monster",
+          },
+          {
+            src: "musik/Schichtwaise-Mosaik.mp3",
+            title: "Schichtwaise – Mosaik",
+          },
+          {
+            src: "musik/Schichtwaise-Tag-mit-Dir.mp3",
+            title: "Schichtwaise – Tag mit Dir",
+          },
+          {
+            src: "musik/Schichtwaise-Wenn-du-gehst.mp3",
+            title: "Schichtwaise – Wenn du gehst",
+          },
+          {
+            src: "musik/Schichtwaise-Wird-alles-gut.mp3",
+            title: "Schichtwaise – Wird alles gut",
+          },
         ];
 
         var currentTrack = 0;
@@ -1183,7 +1384,7 @@
         audio.ontimeupdate = function () {
           if (!audio.duration) return;
           seekBar.value = Math.floor(
-            (audio.currentTime / audio.duration) * 100
+            (audio.currentTime / audio.duration) * 100,
           );
         };
 
@@ -1199,7 +1400,9 @@
         var bookingOverlay = document.getElementById("bookingOverlay");
         var bookingClose = document.getElementById("bookingClose");
         var bookingForm = document.getElementById("bookingForm");
-        var bookingFormContainer = document.getElementById("bookingFormContainer");
+        var bookingFormContainer = document.getElementById(
+          "bookingFormContainer",
+        );
         var bookingSuccess = document.getElementById("bookingSuccess");
 
         function openBooking() {
@@ -1244,7 +1447,10 @@
           var timeVal = document.getElementById("bookingTime").value;
           var note = document.getElementById("bookingNote").value.trim();
 
-          if (!name || !email || !dateVal || !timeVal) return;
+          if (!name || !email || !dateVal || !timeVal) {
+            console.warn("Bitte alle Pflichtfelder ausfüllen");
+            return;
+          }
 
           // Build .ics file
           var startDate = new Date(dateVal + "T" + timeVal + ":00");
@@ -1265,8 +1471,7 @@
             );
           }
 
-          var uid =
-            "schichtwaise-" + Date.now() + "@schichtwaise.de";
+          var uid = "schichtwaise-" + Date.now() + "@schichtwaise.de";
           var icsContent = [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
@@ -1280,7 +1485,8 @@
             "SUMMARY:Schichtwaise – Termin mit " + name,
             "DESCRIPTION:" +
               (note ? note + "\\n\\n" : "") +
-              "Kontakt: " + email,
+              "Kontakt: " +
+              email,
             "ORGANIZER;CN=Schichtwaise:mailto:schichtwaise@gmail.com",
             "ATTENDEE;CN=" + name + ":mailto:" + email,
             "STATUS:CONFIRMED",
@@ -1289,27 +1495,67 @@
           ].join("\r\n");
 
           // Download .ics file
-          var blob = new Blob([icsContent], {
-            type: "text/calendar;charset=utf-8",
-          });
-          var url = URL.createObjectURL(blob);
-          var link = document.createElement("a");
-          link.href = url;
-          link.download = "Schichtwaise-Termin.ics";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(url);
+          try {
+            var blob = new Blob([icsContent], {
+              type: "text/calendar;charset=utf-8",
+            });
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement("a");
+            link.href = url;
+            link.download = "Schichtwaise-Termin.ics";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+          } catch (err) {
+            console.error("Fehler beim Erstellen der .ics Datei:", err);
+          }
 
-          // Show success
-          bookingFormContainer.style.display = "none";
-          bookingSuccess.classList.add("show");
+          // Submit form to FormSubmit with better error handling
+          var formData = new FormData(bookingForm);
+          var submitBtn = bookingForm.querySelector(".submit-btn");
+          var originalBtnText = submitBtn ? submitBtn.textContent : "";
 
-          // Reset form
-          bookingForm.reset();
+          // Disable button during submission
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "⏳ Wird gesendet...";
+          }
 
-          // Auto-close after 4s
-          setTimeout(closeBooking, 4000);
+          fetch(bookingForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          })
+            .then(function (response) {
+              if (response.ok) {
+                console.log("Buchung erfolgreich gesendet");
+                // Show success
+                bookingFormContainer.style.display = "none";
+                bookingSuccess.classList.add("show");
+                bookingForm.reset();
+                setTimeout(closeBooking, 4000);
+              } else {
+                throw new Error(
+                  "Server antwortete mit Status: " + response.status,
+                );
+              }
+            })
+            .catch(function (error) {
+              console.error("Fehler beim Senden:", error);
+              alert(
+                "Entschuldigung, es gab ein Problem beim Senden. Bitte versuche es später noch einmal oder kontaktiere uns direkt per E-Mail.",
+              );
+            })
+            .finally(function () {
+              // Re-enable button
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+              }
+            });
         });
       })();
     </script>
